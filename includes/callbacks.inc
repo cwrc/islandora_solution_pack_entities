@@ -64,19 +64,40 @@ function islandora_entities_autocomplete($type) {
   $mappings = array(
     'scholar' => array(
       'cmodel' => 'islandora:personCModel',
-      'title' => variable_get('islandora_entities_scholar_title_solr_field', 'MADS_title_mt'),
+      'title' => 'MADS_title_mt',
     ),
     'department' => array(
       'cmodel' => 'islandora:organizationCModel',
-      'title' => variable_get('islandora_entities_department_solr_field', 'MADS_department_mt'),
+      'title' => 'MADS_department_mt',
     ),
     'disambiguated' => array(
       'cmodel' => 'islandora:personCModel',
-      'title' => variable_get('islandora_entities_disambiguated_solr_field', 'MADS_disambiguated_fullname_mt'),
+      'title' => 'MADS_disambiguated_fullname_mt',
     ),
     'last_name' => array(
       'cmodel' => 'islandora:personCModel',
-      'title' => variable_get('islandora_entities_last_name_solr_field', 'MADS_family_mt'),
+      'title' => 'MADS_family_mt',
+    ),
+    // MRB: 19-Sep-2015: mappings for MODS bibliographic fields to CWRC entities
+    'mods_title' => array(
+      'cmodel' => 'cwrc:citationCModel',
+      'title' => 'cwrc_entity_title_uniformTitle_et',
+    ),
+    'mods_author' => array(
+      'cmodel' => 'cwrc:person-entityCModel',
+      'title' => 'cwrc_entity_person_preferredForm_et',
+    ),
+    'mods_corporate_author' => array(
+      'cmodel' => 'cwrc:organization-entityCModel',
+      'title' => 'cwrc_entity_org_preferredForm_et',
+    ),
+    'mods_place_of_publication' => array(
+      'cmodel' => 'cwrc:place-entityCModel',
+      'title' => 'cwrc_entity_place_preferredForm_et',
+    ),
+    'mods_publisher' => array(
+      'cmodel' => 'cwrc:organization-entityCModel',
+      'title' => 'cwrc_entity_org_preferredForm_et',
     ),
   );
   $qualifier = $mappings[$type]['title'] . ':*';
